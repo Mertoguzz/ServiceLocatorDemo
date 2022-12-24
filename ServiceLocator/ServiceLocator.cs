@@ -18,7 +18,7 @@ namespace ServiceLocator
         }
         public static bool IsRegistered(Type T)
         {
-            return Providers.ContainsKey(T);    
+            return Providers.ContainsKey(T);
         }
 
         public static void Register<T>(ServiceProvider serviceProvider)
@@ -30,5 +30,16 @@ namespace ServiceLocator
         {
             Providers[typeof(T)] = () => instance;
         }
+
+        public static void RegisterLazy<T, C>()
+        {
+            Providers[typeof(T)] = () => Activator.CreateInstance<C>();
+        }
+
+        private static void Clear()
+        {
+            Providers.Clear();
+        }
+        public static ServiceProvider GetServiceProvider<T>() { return Providers[typeof(T)]; }  
     }
 }

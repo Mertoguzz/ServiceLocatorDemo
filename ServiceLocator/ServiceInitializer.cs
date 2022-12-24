@@ -24,5 +24,23 @@ namespace ServiceLocator
             }
 
         }
+
+        public static void RegisterLazy()
+        {
+            InitializeLazy<IProductService, Product>();
+        }
+
+        private static void InitializeLazy<T, C>()
+        {
+            try
+            {
+                ServiceLocator.RegisterLazy<T, C>();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
     }
 }

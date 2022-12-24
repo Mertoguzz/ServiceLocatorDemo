@@ -8,7 +8,8 @@ namespace WebDemo
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            ServiceInitializer.Register();
+            //ServiceInitializer.Register();
+            ServiceInitializer.RegisterLazy();
         }
 
         protected void Session_Start(object sender, EventArgs e)
