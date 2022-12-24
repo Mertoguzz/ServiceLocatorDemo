@@ -16,6 +16,17 @@ namespace ServiceLocator
             ServiceProvider serviceProvider = Providers[t];
             return (T)serviceProvider();
         }
+
+        public static T Create<T,C>()
+        {
+            Type t = typeof(T);
+            if (!IsRegistered(t))
+            {
+                RegisterLazy<T, C>();
+            }
+            ServiceProvider serviceProvider = Providers[t];
+            return (T)serviceProvider();
+        }
         public static bool IsRegistered(Type T)
         {
             return Providers.ContainsKey(T);

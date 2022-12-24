@@ -8,7 +8,8 @@ namespace WebDemo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var result = ServiceLocator.ServiceLocator.Create<IProductService>().GetProductName(5);
+            //var result = ServiceLocator.ServiceLocator.Create<IProductService>().GetProductName(5);
+            var result = ServiceLocator.ServiceLocator.Create<IProductService, Product>().GetProductName(5);
             MessageBox.Show(result);
         }
     }
